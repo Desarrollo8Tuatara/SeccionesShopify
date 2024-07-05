@@ -1,0 +1,242 @@
+<div
+  class="banner-principal {{ section.settings.clase }}  {{ section.settings.select_baner_type }}"
+  style="background-image: url({{ section.settings.background_image | img_url: 'master' }});"
+>
+  <div class="container">
+    <div class="row align-items-center">
+      {% if section.settings.image != blank %}
+        <div class="col-12 col-lg-6 mb-5 mb-lg-0">
+          {% if section.settings.title != blank %}
+            <h1>{{ section.settings.title }}</h1>
+          {% endif %}
+          {% if section.settings.subtitle != blank %}
+            <h2>{{ section.settings.subtitle }}</h2>
+          {% endif %}
+          {% if section.settings.content != blank %}
+            <p>{{ section.settings.content }}</p>
+          {% endif %}
+          {% if section.settings.button_text != blank %}
+            <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_text }}</a>
+          {% endif %}
+        </div>
+        <div class="col-12 col-lg-6">
+          <img src="{{ section.settings.image | img_url: 'master' }}" alt="Banner Image">
+        </div>
+      {% else %}
+        <div class="col-12 col-lg-6"></div>
+        <div class="col-12 col-lg-6">
+          {% if section.settings.title != blank %}
+            <h1>{{ section.settings.title }}</h1>
+          {% endif %}
+          {% if section.settings.subtitle != blank %}
+            <h2>{{ section.settings.subtitle }}</h2>
+          {% endif %}
+          {% if section.settings.content != blank %}
+            <p>{{ section.settings.content }}</p>
+          {% endif %}
+          {% if section.settings.button_text != blank %}
+            <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_text }}</a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+      .banner-principal {
+        background-size: cover;
+        background-position: center;
+        padding: 2rem 0;
+        color: #fff;
+        position:relative;
+      }
+    {% if section.settings.watermark != blank %}
+      .banner-principal:before{
+        content: '{{ section.settings.watermark }}';
+        position:absolute;
+        width: 100%;
+        text-align: center;
+        font-size: 32rem;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+
+        opacity: 0.6;
+        z-index: 0;
+        align-content: center;
+        align-items: center;
+        {% if section.settings.watermark_color != blank %}
+        color: {{ section.settings.watermark_color }}
+        {% else %}}
+        color: green;
+          {% endif %}
+      }
+    {% endif %}
+    
+    @media( max-width:920px){
+      .banner-principal-lg{
+        height: auto;
+        display: flex;
+      }
+    }
+      .banner-principal .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .banner-principal .col-50 {
+        width: 50%;
+        padding: 20px;
+      }
+      .banner-principal h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      .banner-principal h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+      .banner-principal p {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+      .banner-principal .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+  /* Banner Style 1  */
+    .banner-principal.banner_1 .btn {
+      display: inline-block;
+      background-color: #3e1c54;
+      color: #fff;
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 26px !important;
+      margin-top: 0;
+      min-width: 206px;
+      text-align: center;
+    }
+    .banner-principal.banner_1 h1 {
+      font-size: 60px;
+      line-height: 56px;
+      margin-bottom: 1.5rem;
+    }
+    .banner-principal.banner_1 p {
+      font-size: 20px;
+      line-height: 26px;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Banner Principal",
+  "settings": [
+    {
+      "type": "select",
+      "id": "select_baner_type",
+      "label": "Tipo de banner",
+      "options": [
+        {
+          "value": "banner_1",
+          "label": "Tipo 1"
+        },
+        {
+          "value": "banner_2",
+          "label": "Tipo 2"
+        },
+        {
+          "value": "banner_3",
+          "label": "Tipo 3"
+        },
+        {
+          "value": "banner_4",
+          "label": "Tipo 4"
+        },
+         {
+          "value": "banner_5",
+          "label": "Tipo 5"
+        },
+         {
+          "value": "banner_6",
+          "label": "Tipo 6"
+        },
+         {
+          "value": "banner_7",
+          "label": "Tipo 7"
+        },
+      ],
+      "default": "banner_1"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Imagen de Fondo"
+    },
+    {
+      "type": "text",
+      "id": "clase",
+      "label": "Clases",
+    },
+    {
+      "type": "text",
+      "id": "watermark",
+      "label": "Marca de agua",
+    },
+    {
+      "type": "color",
+      "id": "watermark_color",
+      "label": "color de la marca de agua",
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Cannabis Empowering Communities"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Supreme Origin Crafting Innovative Cannabis Products for Positive Community Change Impacted by the War on Drugs."
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Contenido",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Texto del Botón",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del Botón",
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Principal"
+    }
+  ]
+}
+{% endschema %}
