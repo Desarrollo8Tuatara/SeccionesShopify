@@ -1,0 +1,259 @@
+<footer class="custom-footer">
+  <div class="idt-foofter-content">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <img
+          src="{{ section.settings.logo | img_url: 'master' }}"
+          alt="Logo"
+          width="auto"
+          height="auto"
+        >
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>About supreme origin</h3>
+          <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about-us">About us</a></li>
+            <li><a href="/farmer-recovery">Farmer Recovery</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Our products</h3>
+          <ul>
+            <li><a href="/products/sweet-oat-milk">Sweet oat milk</a></li>
+            <li><a href="/products/caramel-macchiato">Caramel Macchiato</a></li>
+            <li><a href="/products/cafe-mocha">Café Mocha</a></li>
+            <li><a href="/products/black">Black</a></li>
+            <li><a href="/products/french-vanilla-late">French Vanilla Late</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Supreme lovers</h3>
+          <ul>
+            <li><a href="/buy-here">Buy here</a></li>
+            <li><a href="/contact">Contacto</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/press">Press</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="footer-middle">
+      <div class="social-links">
+        <a href="{{ section.settings.facebook_link }}"
+          ><img
+            src="{{ section.settings.facebook_icon | img_url: 'small' }}"
+            alt="Facebook"
+            width="auto"
+            height="auto"
+        ></a>
+        <a href="{{ section.settings.instagram_link }}"
+          ><img
+            src="{{ section.settings.instagram_icon | img_url: 'small' }}"
+            alt="Instagram"
+            width="auto"
+            height="auto"
+        ></a>
+        <a href="{{ section.settings.youtube_link }}"
+          ><img
+            src="{{ section.settings.youtube_icon | img_url: 'small' }}"
+            alt="YouTube"
+            width="auto"
+            height="auto"
+        ></a>
+        <a href="{{ section.settings.linkedin_link }}"
+          ><img
+            src="{{ section.settings.linkedin_icon | img_url: 'small' }}"
+            alt="LinkedIn"
+            width="auto"
+            height="auto"
+        ></a>
+      </div>
+      <div class="payment-methods">
+        <img
+          src="{{ section.settings.discover_icon | img_url: 'small' }}"
+          alt="Discover"
+          width="auto"
+          height="auto"
+        >
+        <img
+          src="{{ section.settings.mastercard_icon | img_url: 'small' }}"
+          alt="MasterCard"
+          width="auto"
+          height="auto"
+        >
+        <img
+          src="{{ section.settings.visa_icon | img_url: 'small' }}"
+          alt="Visa"
+          width="auto"
+          height="auto"
+        >
+        <img
+          src="{{ section.settings.amex_icon | img_url: 'small' }}"
+          alt="American Express"
+          width="auto"
+          height="auto"
+        >
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>{{ section.settings.legal_text }}</p>
+      <p>
+        &copy; {{ 'now' | date: '%Y' }}
+        {{ shop.name }}. Powered by Shopify.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .custom-footer {
+    background-color: #4b226a;
+    color: #fff;
+    padding: 40px 20px;
+  }
+  .idt-foofter-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .custom-footer .footer-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .custom-footer .footer-logo img {
+    max-width: 150px;
+  }
+  .custom-footer .footer-links {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+  }
+  .custom-footer .footer-column h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  .custom-footer .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  .custom-footer .footer-column ul li {
+    margin-bottom: 5px;
+  }
+  .custom-footer .footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .custom-footer .footer-middle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .custom-footer .social-links a {
+    margin-right: 10px;
+  }
+  .custom-footer .social-links img {
+    max-width: 20px;
+  }
+  .custom-footer .payment-methods img {
+    max-width: 50px;
+    margin-right: 10px;
+  }
+  .custom-footer .footer-bottom {
+    text-align: center;
+    font-size: 0.8em;
+  }
+  .custom-footer .footer-bottom p {
+    margin: 5px 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer Personalizado",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "facebook_link",
+      "label": "Facebook Link",
+      "default": "#"
+    },
+    {
+      "type": "image_picker",
+      "id": "facebook_icon",
+      "label": "Facebook Icon"
+    },
+    {
+      "type": "text",
+      "id": "instagram_link",
+      "label": "Instagram Link",
+      "default": "#"
+    },
+    {
+      "type": "image_picker",
+      "id": "instagram_icon",
+      "label": "Instagram Icon"
+    },
+    {
+      "type": "text",
+      "id": "youtube_link",
+      "label": "YouTube Link",
+      "default": "#"
+    },
+    {
+      "type": "image_picker",
+      "id": "youtube_icon",
+      "label": "YouTube Icon"
+    },
+    {
+      "type": "text",
+      "id": "linkedin_link",
+      "label": "LinkedIn Link",
+      "default": "#"
+    },
+    {
+      "type": "image_picker",
+      "id": "linkedin_icon",
+      "label": "LinkedIn Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "discover_icon",
+      "label": "Discover Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "mastercard_icon",
+      "label": "MasterCard Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "visa_icon",
+      "label": "Visa Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "amex_icon",
+      "label": "American Express Icon"
+    },
+    {
+      "type": "textarea",
+      "id": "legal_text",
+      "label": "Texto Legal"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Personalizado",
+      "category": "Footers"
+    }
+  ]
+}
+{% endschema %}
