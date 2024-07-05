@@ -42,13 +42,4 @@
 
 ```
     footer.liquid
-    footer-personalizado.liquid
-```
-
-### headers:
-
-- Contiene los archivos correspondientes a las secciones de header.
-
-```
-    header.liquid
 ```
