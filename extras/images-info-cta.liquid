@@ -1,0 +1,206 @@
+<style>
+  .page-width {
+    position: relative;
+  }
+  .collection-bg__image {
+    position: absolute;
+    width: 100%;
+    height: 100% !important;
+    top: 0;
+    z-index: 0;
+    object-fit: cover;
+  }
+  .content-images-fatured {
+    background-image: none;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 140px 0 130px !important;
+  }
+  .collection-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .collection-card__image {
+    width: 108px;
+    margin-bottom: 35px;
+  }
+  .collection-card__title {
+    font-size: 18px;
+    color: #2a1714;
+    letter-spacing: -0.02px;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .collection-card__title span {
+    font-size: 13px;
+    font-weight: 600;
+    display: block;
+    letter-spacing: -0.01px;
+  }
+  .collection-grid {
+    overflow: initial;
+  }
+  collection-card__info {
+    width: 100%;
+  }
+  .collection-card__button {
+    background: #3e1c54;
+    padding: 1rem !important;
+    display: block;
+    border-radius: 26px;
+    color: #fff !important;
+    font-weight: bold;
+    text-align: center;
+    width: 150px;
+    margin: auto;
+    border: 1px solid #3e1c54 !important;
+    transition: 0.5s all;
+  }
+  .collection-card__button:hover {
+    color: #3e1c54 !important;
+    background: #fff;
+  }
+  .d-flex-grid-6 {
+    display: flex;
+  }
+  .grid__item {
+    margin: 0 !important;
+    list-style: none !important;
+  }
+</style>
+
+{% if section.settings.background_image != blank %}
+  <img
+    src="{{  section.settings.background_image | img_url: 'master' }}"
+    class="collection-bg__image"
+    width="auto"
+    height="auto"
+  >
+{% endif %}
+<div class="page-width">
+  {% if section.settings.title != blank %}
+    <div class="section-header {% if section.settings.is_store != blank %}text-left{% else %}text-center{% endif %}">
+      <h2>{{ section.settings.title | escape }}</h2>
+    </div>
+  {% endif %}
+  <div class="container">
+    <div class="row justify-content-center">
+      {% for block in section.blocks limit: section.blocks.size %}
+        <div class="col mb-5 mb-lg-0" {{ block.shopify_attributes }}>
+          <div class="collection-card">
+            <img
+              src="{{ block.settings.image | img_url: '400x' }}"
+              alt="{{ block.settings.image_alt }}"
+              class="collection-card__image"
+              width="auto"
+              height="auto"
+            >
+            <div class="collection-card__info ">
+              <h3 class="collection-card__title">{{ block.settings.title }}</h3>
+              {% if block.settings.description != blank %}
+                <p class="collection-card__description">{{ block.settings.description }}</p>
+              {% endif %}
+              {% if block.settings.button_text != blank %}
+                <a href="{{ block.settings.link }}" class="collection-card__button">{{ block.settings.button_text }}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {% if section.settings.is_store != blank %}
+      <a href="{{ section.settings.link_padre }}" class="btn_store">{{ section.settings.button_text_padre }} </a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Imagenes Destacadas",
+  "class": "index-section content-images-fatured",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "is_store",
+      "label": "Es un listado de tiendas"
+    },
+    {
+      "label": "Enlace",
+      "id": "link_padre",
+      "type": "url"
+    },
+    {
+      "label": "Texto del botón",
+      "id": "button_text_padre",
+      "type": "text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Imagenes Destacadas"
+    },
+    {
+      "type": "range",
+      "id": "grid",
+      "label": "Imagenes por fila",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Imagen de fondo"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_image",
+      "name": "Imagen",
+      "settings": [
+        {
+          "label": "Imagen",
+          "id": "image",
+          "type": "image_picker"
+        },
+        {
+          "label": "Texto alternativo de la imagen",
+          "id": "image_alt",
+          "type": "text"
+        },
+        {
+          "label": "Título",
+          "id": "title",
+          "type": "text"
+        },
+        {
+          "label": "Description",
+          "id": "description",
+          "type": "textarea"
+        },
+        {
+          "label": "Enlace",
+          "id": "link",
+          "type": "url"
+        },
+        {
+          "label": "Texto del botón",
+          "id": "button_text",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Imagenes Destacadas"
+    }
+  ]
+}
+{% endschema %}

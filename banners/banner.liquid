@@ -20,7 +20,7 @@
           {% endif %}
         </div>
         <div class="col-12 col-lg-6">
-          <img src="{{ section.settings.image | img_url: 'master' }}" alt="Banner Image">
+          <img src="{{ section.settings.image | img_url: 'master' }}" alt="Banner Image" width="auto" height="auto">
         </div>
       {% else %}
         <div class="col-12 col-lg-6"></div>
@@ -76,7 +76,7 @@
           {% endif %}
       }
     {% endif %}
-    
+
     @media( max-width:920px){
       .banner-principal-lg{
         height: auto;
@@ -163,18 +163,18 @@
           "value": "banner_4",
           "label": "Tipo 4"
         },
-         {
+        {
           "value": "banner_5",
           "label": "Tipo 5"
         },
-         {
+        {
           "value": "banner_6",
           "label": "Tipo 6"
         },
-         {
+        {
           "value": "banner_7",
           "label": "Tipo 7"
-        },
+        }
       ],
       "default": "banner_1"
     },
@@ -186,17 +186,17 @@
     {
       "type": "text",
       "id": "clase",
-      "label": "Clases",
+      "label": "Clases"
     },
     {
       "type": "text",
       "id": "watermark",
-      "label": "Marca de agua",
+      "label": "Marca de agua"
     },
     {
       "type": "color",
       "id": "watermark_color",
-      "label": "color de la marca de agua",
+      "label": "color de la marca de agua"
     },
     {
       "type": "text",
@@ -225,7 +225,7 @@
     {
       "type": "url",
       "id": "button_link",
-      "label": "Enlace del Botón",
+      "label": "Enlace del Botón"
     },
     {
       "type": "image_picker",

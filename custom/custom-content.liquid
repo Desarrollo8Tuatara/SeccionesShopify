@@ -1,0 +1,129 @@
+<style>
+  .content-personalizado{
+    padding:171px 0 128px;
+    {% if section.settings.image_fondo != blank %}
+      background-image:url({{ section.settings.image_fondo | img_url: 'master' }});
+    {% endif %}
+      background-color:{{ section.settings.color_fondo }}
+  }
+  .img-section{
+      height: 508px;
+      margin: auto;
+      display: block;
+  }
+  .title-section{
+    color: #951551;
+    font-size: 40px !important;
+    line-height: 32px;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+  }
+  .sub-title-section{
+    color: #3E1C54;
+    font-size: 41px !important;
+    line-height: 43px;
+    margin-bottom: 1rem;
+    letter-spacing: 0;
+    text-transform: uppercase !important;
+  }
+  .content-section p {
+    color: #2A1714;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    letter-spacing: -0.02px;
+  }
+</style>
+
+<div class="content-personalizado">
+  <div class="container">
+    <div class="row ">
+      <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+        {% if section.settings.imagen_principal != blank %}
+          <img
+            class="img-section"
+            src="{{ section.settings.imagen_principal | img_url: 'master' }}"
+            alt="{{ section.settings.alt_text }}"
+            width="auto"
+            height="auto"
+          >
+        {% endif %}
+      </div>
+      <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+        {% if section.settings.titulo != blank %}
+          <h2 class="title-section">{{ section.settings.titulo }}</h2>
+        {% endif %}
+        {% if section.settings.sub_titulo != blank %}
+          <h3 class="sub-title-section">{{ section.settings.sub_titulo }}</h3>
+        {% endif %}
+        {% if section.settings.content != blank %}
+          <div class="content-section">
+            {{ section.settings.content }}
+          </div>
+        {% endif %}
+        {% if section.settings.btn_text != blank %}
+          <a class="btn" href="{{ section.settings.url_button }}">{{ section.settings.btn_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contenido personalizado",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_fondo",
+      "label": "Imagen de fondo"
+    },
+    {
+      "type": "color",
+      "id": "color_fondo",
+      "label": "Color de fondo"
+    },
+    {
+      "type": "image_picker",
+      "id": "imagen_principal",
+      "label": "Imagen"
+    },
+    {
+      "type": "text",
+      "id": "alt_text",
+      "label": "Texto alternatívo de la imagen"
+    },
+    {
+      "type": "text",
+      "id": "titulo",
+      "label": "Título de la sección"
+    },
+    {
+      "type": "text",
+      "id": "sub_titulo",
+      "label": "Sunb titulo de la sección"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Contenido de la sección"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Texto de el boton"
+    },
+    {
+      "type": "url",
+      "id": "url_button",
+      "label": "Enlace de el botón"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contenido personalizado"
+    }
+  ]
+}
+{% endschema %}

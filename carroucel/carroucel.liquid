@@ -1,0 +1,317 @@
+<style>
+  #container-banner .box-text p {
+    max-width: 100%;
+  }
+  #container-banner.caroucel_info {
+    padding: 132px 0 100px;
+    border-radius: 0;
+  }
+  #container-banner.caroucel_info .title {
+    font-size: 40px !important;
+    line-height: 32px;
+    text-transform: uppercase !important;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+  #container-banner.caroucel_info .content {
+    font-size: 16px !important;
+    line-height: 22px;
+    letter-spacing: -0.02px;
+    max-width: 556px;
+    margin: 0 auto 68px;
+  }
+  #container-banner .owl-prev {
+    left: 1em;
+  }
+
+  #container-banner .owl-next {
+    right: 1em;
+  }
+  #container-banner .owl-prev,
+  #container-banner .owl-next {
+    top: 35%;
+  }
+  .main-content .shopify-section {
+    position: relative;
+  }
+  #PageContainer .main-content {
+    padding-bottom: 0 !important;
+  }
+  .banner-well {
+    background-color: #f1f1f1;
+    padding: 128px 0 4rem;
+  }
+  main#MainContent {
+    background: #f0ecdb !important;
+  }
+  #container-banner .item {
+    width: 100%;
+    min-height: 300px;
+    border-radius: 23px;
+  }
+
+  #container-banner {
+    position: relative;
+    padding-bottom: 128px;
+    border-radius: 12px;
+  }
+  #container-banner .box-text {
+    padding: 4rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 0px 20px 20px;
+  }
+  #container-banner h3.titelbox {
+    text-transform: initial !important;
+    text-align: left;
+    width: 100%;
+    font-size: 24px;
+    line-height: 26px;
+    margin-bottom: 1rem;
+  }
+
+  #container-banner .box-text p {
+    font-size: 1rem;
+    line-height: 20px;
+    letter-spacing: -0.02px;
+    font-weight: 600;
+    margin: 0;
+  }
+  #container-banner .item video {
+    border-radius: 12px;
+    width: 100%;
+    height: auto !important;
+  }
+  .owl-theme .owl-dots .owl-dot span {
+    width: 30px;
+    height: 5px;
+    background: #efcf39;
+    transition: 0.5s;
+  }
+  button.owl-dot.active span {
+    background: #79bbaf !important;
+    height: 15px !important;
+    width: 15px !important;
+  }
+  button.owl-dot {
+    background: initial;
+    border: initial;
+    width: initial;
+    padding: 0;
+  }
+  .owl-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+  }
+  .img-coffe-bk {
+    z-index: 0;
+    position: absolute;
+    top: -40px;
+    left: -25px;
+  }
+  .item img {
+    height: 400px;
+    object-fit: cover;
+    border-radius: 33px;
+    margin-bottom: -25px;
+  }
+
+  .edit-owl-carousel .owl-nav [class*='owl-'] {
+    background: #2a1714 !important;
+    border-radius: 50%;
+  }
+
+  .edit-owl-carousel .owl-nav [class*='owl-']:hover {
+    background: #fff0;
+  }
+
+  .edit-owl-carousel .owl-nav .owl-prev,
+  .edit-owl-carousel .owl-nav .owl-next {
+    width: 42px;
+    height: 42px;
+  }
+
+  .edit-owl-carousel .owl-prev span,
+  .edit-owl-carousel .owl-next span {
+    color: #79bbaf;
+    font-size: 3em;
+    display: block;
+    width: 42px;
+    height: 42px;
+    margin-top: -36px;
+  }
+  @media (max-width: 600px) {
+    .img-coffe-bk {
+      bottom: -50px;
+      top: auto;
+      left: 0;
+      width: 96px;
+      z-index: 1;
+    }
+    #container-banner .item {
+      width: 90%;
+      margin: auto;
+    }
+  }
+</style>
+<div
+  id="container-banner"
+  class="caroucel_info"
+  style="background-color:{% if section.settings.framer_color != blank %} {{ section.settings.framer_color }} {% else %} #fff {% endif %}"
+>
+  {% if section.settings.framer_carrousel_title != blank %}
+    <h2 class="text-center title" style="color: {{ section.settings.framer_color_title }}">
+      {{ section.settings.framer_carrousel_title }}
+    </h2>
+  {% endif %}
+  {% if section.settings.framer_content != blank %}
+    <p class="text-center content" style="color: {{ section.settings.framer_color_title }}">
+      {{ section.settings.framer_content }}
+    </p>
+  {% endif %}
+  <div class="owl-carousel owl-theme edit-owl-carousel">
+    {% for block in section.blocks %}
+      <div class="item" data-merge="1">
+        <img src="{{ block.settings.image | img_url: 'master' }}" width="auto" height="auto">
+        <div class="box-text" style="background-color:  {{ block.settings.color_card }}">
+          <h3 class="titelbox" style="color:{{ block.settings.color_card_text }}">
+            {{ block.settings.title_carrucel }}
+          </h3>
+          <p style="color:{{ block.settings.color_card_text }}">{{ block.settings.desc_carrucel }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('.owl-carousel').owlCarousel({
+      /**
+       * owl carousel cloned prev/next blocks to allow infinite loop,
+       * so you must to init canvas after every change
+       *
+       * P.S. change event fires also on owl carousel init, so no need to init canvas before
+       */
+
+      loop: true,
+      margin: 20,
+      nav: true,
+      center: true,
+      dots: true,
+      lazyLoad: true,
+      slideBy: 'page',
+      autoplay: 1000,
+      autoplayTimeout: 5000,
+      smartSpeed: 1000,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1,
+          rows: 1,
+        },
+        768: {
+          items: 2,
+          rows: 1,
+        },
+        1500: {
+          items: 2,
+          rows: 1,
+        },
+      },
+    });
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" async></script>
+{% schema %}
+{
+  "name": "Carrusel",
+  "class": "index-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "color",
+      "id": "framer_color",
+      "label": "Color de fondo",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "framer_color_title",
+      "label": "Color de titulo",
+      "default": "#2A1714"
+    },
+    {
+      "type": "color",
+      "id": "framer_color_text",
+      "label": "Color de texto",
+      "default": "#2A1714"
+    },
+
+    {
+      "type": "text",
+      "id": "framer_carrousel_title",
+      "label": "Título de la sección"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "framer_content",
+      "label": "Descripción"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_image",
+      "name": "Imagen",
+      "settings": [
+        {
+          "type": "color",
+          "id": "color_card",
+          "label": "Color de tarjeta"
+        },
+        {
+          "type": "color",
+          "id": "color_card_text",
+          "label": "Color de texto",
+          "default": "#fff"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen"
+        },
+        {
+          "id": "image_alt",
+          "type": "text",
+          "label": "Texto Alternativo de la imagen"
+        },
+        {
+          "id": "title_carrucel",
+          "type": "text",
+          "label": "Título"
+        },
+        {
+          "id": "desc_carrucel",
+          "type": "inline_richtext",
+          "label": "Descripción"
+        },
+        {
+          "id": "url_carrucel",
+          "type": "url",
+          "label": "Enlace del elemento"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Carrusel"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,108 @@
+<style>
+  .about-banner-only-text {
+    padding: 64px 0 200px;
+    background-position: bottom center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .about-banner-only-text .section {
+    text-align: center;
+  }
+  .about-banner-only-text .section h2 {
+    color: #ffffff;
+    font-size: 40px;
+    line-height: 56px;
+    letter-spacing: 0;
+    text-transform: uppercase !important;
+    margin-bottom: 2rem;
+  }
+  .about-banner-only-text .section h3 {
+    color: #ffe3b6;
+    font-size: 50px;
+    line-height: 56px;
+    letter-spacing: 0px;
+    text-transform: uppercase !important;
+    margin-bottom: 2rem;
+  }
+  .about-banner-only-text .section .text-section {
+    margin-bottom: 1rem;
+  }
+  .about-banner-only-text .section .text-section p {
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0px;
+    margin-bottom: 1rem;
+    font-weight: 100;
+  }
+  .content-image {
+    width: 154px;
+    margin: 0 auto;
+  }
+</style>
+<div
+  class="about-banner-only-text"
+  style="background-image: url({{ section.settings.background_image | img_url: 'master' }});"
+>
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          {% if section.settings.title != blank %}
+            <h2>{{ section.settings.title }}</h2>
+          {% endif %}
+          {% if section.settings.sub_title != blank %}
+            <h3>{{ section.settings.sub_title }}</h3>
+          {% endif %}
+          {% if section.settings.content != blank %}
+            <div class="text-section ">{{ section.settings.content }}</div>
+          {% endif %}
+          {% if section.settings.logo != blank %}
+            <div class="content-image">
+              <img src="{{ section.settings.logo | img_url: 'master' }}" alt="Banner Image" width="auto" height="auto">
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Banner Informativo",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Imagen de Fondo"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub título"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Contenido"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Idt Banner Informativo Solo Texto"
+    }
+  ]
+}
+{% endschema %}
